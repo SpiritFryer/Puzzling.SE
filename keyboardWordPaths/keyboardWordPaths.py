@@ -7,7 +7,7 @@
 # Find four- and five-letter words
 fours = set()
 fives = set()
-with open("..//sowpods.txt", "r") as f:
+with open("sowpods.txt", "r") as f:
   for word in f:
     if(len(word) == 5):
       fours.add(word[:-1])
