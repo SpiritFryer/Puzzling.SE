@@ -7,7 +7,7 @@
 # Find four- and five-letter words
 fours = set()
 fives = set()
-with open("..//sowpods.txt", "r") as f:
+with open("sowpods.txt", "r") as f:
   for word in f:
     if(len(word) == 5):
       fours.add(word[:-1])
@@ -16,11 +16,11 @@ with open("..//sowpods.txt", "r") as f:
 
 # Set-up our keyboard layout. The 0s make it easy to loop over the possibilities and just ignore the ones involving 0s.
 rows = [
-['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-['0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '0'],
-['0', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '0', '0'],
-['0', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '0', '0', '0', '0'],
-['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+['0', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '0', '0'],
+['0', '0', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '0', '0', '0'],
+['0', '0', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '0', '0', '0', '0', '0'],
+['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
 ]
 
 # found[0] = Triangle, [1] = Open Rhombus, [2] = Rhombus
@@ -40,8 +40,8 @@ def check(s, type):
         found[type].append(s)
    
 # Loop through our keyboard layout's letters.
-for i in range(1, len(rows) - 2):
-  for j in range(len(rows[i]) - 2):
+for i in range(1, len(rows) - 1):
+  for j in range(2, len(rows[i]) - 2):
     if rows[i][j] != '0':
       # Triangles: DES, DSX, DXC, DCF, DFR, DRE, DER, DRF, DFC, DCX, DXS, DSE. 
       for k in [[[-1, 0], [0, -1]],
